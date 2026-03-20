@@ -1,0 +1,10 @@
+   heapify(arr,min,n);
+    printf("DONE!!!!\n");
+    printheap(arr,n);
+    printf("\nPopping done \n");
+    pop(arr,n,0);
+    n--;
+    printheap(arr,n);
+    n++;
+    insert(arr,50,n);
+    printf("\ninsertion done \n");

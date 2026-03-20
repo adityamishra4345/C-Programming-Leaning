@@ -54,26 +54,46 @@ void heapify(int arr[],int min,int n){
 
 // }
 int pop(int arr[],int n,int i){
-    int min=(n-2)/2;
     arr[i]=arr[n-1];
-    heapify(arr,i,n);
+    heapify(arr,i,n-1);
+}
+void fixpostn(int arr[],int n,int i){
+    if(i<=0) return;
+    if(arr[i]>arr[(i-1)/2]){
+        swap(&arr[i],&arr[(i-1)/2]);
+        i=(i-1)/2;
+        fixpostn(arr,n,i);
+    }
+    
+}
+void insert(int arr[],int val,int n){
+    int i=n-1;
+    arr[i]=val;
+    fixpostn(arr,n,i);
+}
+void printheap(int arr[],int n){
+        for(int k=0;k<n;k++){
+        printf("%d  ",arr[k]);
+    }
 }
 
 int main(){
-    int arr[]={1, 43, 21, 32, 27, 89, 54, 34, 33};
-    int n=sizeof(arr)/4;
+    int arr[100]={1, 43, 21, 32, 27, 89, 54, 34, 33};
+    int n=9;
     int min=(n-2)/2;
+    
     heapify(arr,min,n);
     printf("DONE!!!!\n");
-     for(int k=0;k<n;k++){
-        printf("%d  ",arr[k]);
-    }
+    printheap(arr,n);
     printf("\nPopping done \n");
     pop(arr,n,0);
     n--;
-    for(int k=0;k<n;k++){
-        printf("%d  ",arr[k]);
-    }
+    printheap(arr,n);
+    n++;
+    insert(arr,50,n);
+    printf("\ninsertion done \n");
+    printheap(arr,n);
+
     
 
     return 0;
