@@ -18,6 +18,8 @@ void bubblesort(int arr[],int n){
 }
 void insert(int arr[],int val,int n){
     int c=n-1;
+    //instead of using two loops one for finding where to put value
+    //and other to put value it can be done in one loop
     // for(int i=n-1;i>0;i--){
     //     if(val<arr[i]){
     //         c=i+1;
