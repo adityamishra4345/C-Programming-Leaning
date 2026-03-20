@@ -29,6 +29,35 @@ void heapify(int arr[],int min,int n){
         heapi(arr,n,i);
     }
 }
+//since we have to pop the most priority element i.e arr[0],or CEO
+//this is wrong as since we made the tee correct but for it to be a  heap 
+//it must be  complete binary tree i.e since we removed one ceo
+//size decrease by 1 and since their will be one empty seat which is for 
+//tree it will be at bottom but for arr it lies somewhere in middle i.e 
+//for our case it will be [54, 43, 21, 34, 27, EMPTY, 1, 32, 33]
+//and for heap size will be decresed by one and we end up losing last element \
+//i.e 33. 
+
+// void pop(int arr[],int n,int i){
+//     if(2*i+1<n && arr[2*i+1]>=arr[2*1+2]){
+//         arr[i]=arr[2*i+1];
+//         i=2*i+1;
+//         pop(arr,n,i);
+//     }
+//     else if(2*i+2<n && arr[2*i+1]<arr[2*1+2])
+//     {
+//         arr[i]=arr[2*i+2];
+//         i=2*i+2;
+//         pop(arr,n,i);
+//     }
+
+
+// }
+int pop(int arr[],int n,int i){
+    int min=(n-2)/2;
+    arr[i]=arr[n-1];
+    heapify(arr,i,n);
+}
 
 int main(){
     int arr[]={1, 43, 21, 32, 27, 89, 54, 34, 33};
@@ -36,6 +65,12 @@ int main(){
     int min=(n-2)/2;
     heapify(arr,min,n);
     printf("DONE!!!!\n");
+     for(int k=0;k<n;k++){
+        printf("%d  ",arr[k]);
+    }
+    printf("\nPopping done \n");
+    pop(arr,n,0);
+    n--;
     for(int k=0;k<n;k++){
         printf("%d  ",arr[k]);
     }
