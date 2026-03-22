@@ -12,8 +12,9 @@ void buuble_sort(int arr[],int n){
 }
 int main(){
     int arr[]={1,4,32,6,8,5,55,12,111};
-    buuble_sort(arr,9);
-    for(int i=0;i<9;i++){
+    int n=sizeof(arr)/4;
+    buuble_sort(arr,n);
+    for(int i=0;i<n;i++){
         printf("%d   ",arr[i]);
     }
     return 0;
