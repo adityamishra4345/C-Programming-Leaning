@@ -1,0 +1,2 @@
+
+    bfs(graphh, 1);
