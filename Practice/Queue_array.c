@@ -5,12 +5,12 @@ typedef struct queue{
     int arr[100];
     int rear;
     int n;
-}qu;
-void intit(qu* q){
+}Queue;
+void intit(Queue* q){
     q->rear=-1;
     q->n=-1;
 } 
-void push(qu* q,int val){
+void push(Queue* q,int val){
     if(q->rear>=100){
         printf("Queue full");
         return ;
@@ -22,7 +22,7 @@ void push(qu* q,int val){
     q->n++;
     q->arr[q->n]=val;
 }
-int pop(qu* q){
+int pop(Queue* q){
     if(q->rear==-1){
         printf("Queue Empty");
         return -1;
@@ -31,7 +31,7 @@ int pop(qu* q){
     q->rear++;
     return a;
 }
-int peek(qu* q ){
+int peek(Queue* q ){
     if(q->rear==-1){
         printf("Queue Empty");
         return -1;
@@ -39,14 +39,14 @@ int peek(qu* q ){
     return q->arr[q->rear];
 }
 
-void printq(qu* q){
+void printq(Queue* q){
     for(int i=q->rear;i<=q->n;i++){
         printf("%d  ",q->arr[i]);
     }
     printf("\n");
 }
 int main(){
-    qu que;
+    Queue que;
     intit(&que);
     push(&que,1);
     push(&que,2);
