@@ -35,23 +35,32 @@ void printt(node* root){
      printf("%d  ",temp->data);
      printt(temp->right);
 }
-//recursion for counting
-// int count(node* root){
-//     if(root==NULL){
-//         return 0;
-//     }   
-//      return 1+count(root->left)+count(root->right);
-// }
-int c=0;
-int count(node* root){
+
+int c=-1000000;
+int maxi(node* root){
     if(root==NULL){
         return 0;
     }   
      node* temp=root;
-     count(temp->left);
-     c++;
-     count(temp->right);
+     maxi(temp->left);
+     if(temp->data>c){
+        c=temp->data;
+     }
+     maxi(temp->right);
      return c;
+}
+int d=1000000;
+int mini(node* root){
+    if(root==NULL){
+        return 0;
+    }   
+     node* temp=root;
+     mini(temp->left);
+     if(temp->data<d){
+        d=temp->data;
+     }
+     mini(temp->right);
+     return d;
 }
 int main(){
     node* root;
@@ -59,5 +68,7 @@ int main(){
     root=build();
     printt(root);
     printf("\n");
-    printf("No of Node are %d",count(root));
+    printf("Maximum of Node are %d",maxi(root));
+     printf("\n");
+    printf("Minimum of Node are %d",mini(root));
 }
