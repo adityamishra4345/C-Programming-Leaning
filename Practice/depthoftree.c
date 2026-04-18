@@ -35,40 +35,28 @@ void printt(node* root){
      printf("%d  ",temp->data);
      printt(temp->right);
 }
+int h=0,s=0;
+int depth(node* root){
+    if(root==NULL){
+        return;
+    }   
+    h++;
+    if(h>s){
+        s=h;
+    }
+    
+     node* temp=root;
+     depth(temp->left);
+     depth(temp->right);
+     h--;
+     return s;
+}
 
-int c=-1000000;
-int maxi(node* root){
-    if(root==NULL){
-        return 0;
-    }   
-     node* temp=root;
-     maxi(temp->left);
-     if(temp->data>c){
-        c=temp->data;
-     }
-     maxi(temp->right);
-     return c;
-}
-int d=1000000;
-int mini(node* root){
-    if(root==NULL){
-        return 0;
-    }   
-     node* temp=root;
-     mini(temp->left);
-     if(temp->data<d){
-        d=temp->data;
-     }
-     mini(temp->right);
-     return d;
-}
 int main(){
     node* root;
     printf("Enter the valur of root Node");
     root=build();
     printt(root);
     printf("\n");
-    printf("Maximum of Node are %d",maxi(root));
-     printf("\n");
-    printf("Minimum of Node are %d",mini(root));
-} 
+    printf("depth of tree is %d",depth(root));
+}
