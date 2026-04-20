@@ -41,20 +41,22 @@ node* build(node* root){
     return root;
 
 }
-int* bstvalidate(node* root,int min,int max,int* c){
+void lca(node* root,int n,int m,int* c){
     if(root==NULL){
-        return c;
+        return ;
     }
     else{
-    if(root->data<min||root->data>max){
-        *c=1;
-        return c;
+        if(n>root->data&&m>root->data){
+            lca(root->right,n,m,c);
+        }
+        else if(n<root->data&&m<root->data){
+            lca(root->left,m,n,c);
+        }
+        else {
+            *c=root->data;
+        }
+        
     }
-    bstvalidate(root->left,min,root->data,c);
-    bstvalidate(root->right,root->data,max,c);
-    }
-    return c;
-
 }
 void printb(node* root){
     node* temp=root;
@@ -74,4 +76,10 @@ int main(){
     node* root=create(n);
     build(root);
     printb(root);
+    int c=root->data;
+    printf("\nEnter the no whose lca u have to find");
+    int m, o;
+    scanf("%d %d",&m,&o);
+    lca(root,m,o,&c);
+    printf("\nLCA of %d , %d is %d",m,o,c);
 }
