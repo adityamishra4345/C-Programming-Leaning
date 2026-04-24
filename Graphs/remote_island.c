@@ -33,12 +33,9 @@ void dirconn(int arr[][column],int rows){
         printf("END\n");
     }
 }
-void bfs(int arr[][column],int rows,int visited[],int curr){
 
-}
 void dfs(int arr[][column],int rows,int visited[],int curr){
     visited[curr]=1;
-    // printf("%d->",curr);
     for(int i=0;i<rows;i++){
         if(visited[i]==0&&arr[curr][i]==1){
             dfs(arr,rows,visited,i);
@@ -76,11 +73,7 @@ int main(){
         scanf("%d %d",&start,&end);
         addedge(arr,start,end);
     }
-    // printg(arr,rows);
-    // printf("\n");
-    // int visited[100]={0};
-    // dfs(arr,rows,visited,0);
-    // printf("End");
+    
     int visi[100]={0};
     printf("\n no of islands are %d ",noofisland(arr,rows,visi,0));
     
