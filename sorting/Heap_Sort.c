@@ -36,7 +36,6 @@ void printheap(int arr[],int n){
 }
 void heapsort(int arr[],int n,int i){
     if(n<=0) return;
-    int min=(n-2)/2;
     heapi(arr,n,i);
     swap(&arr[i],&arr[n-1]);
     heapsort(arr,n-1,i);
